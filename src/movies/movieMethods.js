@@ -20,5 +20,15 @@ try {
 
 // create an update one or update many function
 
+exports.updateMovie = async (id, movieObj) => {
+    try {
+        await Movie.updateOne(id, movieObj);
+        
+
+    }catch(error){
+        console.log(error);
+    };
+};
+
 //create a delete or delete many function
 
