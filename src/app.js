@@ -2,7 +2,8 @@ require("./db/connection")
 const mongoose = require("mongoose");
 
 const yargs = require("yargs")
-const {addMovie, listMovies, updateMovie} = require("./movies/movieMethods");
+const {addMovie, listMovies, updateMovie, deleteFilm} = require("./movies/movieMethods");
+const Movie = require("./movies/movieModels");
 
 const app = async (yargsObj) => {
     try{
@@ -28,6 +29,11 @@ console.log(await listMovies());
         await updateMovie(id,change);
     console.log("Entry Updated");
         }
+        
+else if (yargsObj.delete) {
+    let target = { title: yargsObj.delete };
+    await deleteFilm(Movie, target);
+    console.log("Entry deleted");}
 
         else {
             console.log("Incorrect command, try again")

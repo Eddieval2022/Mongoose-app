@@ -31,4 +31,12 @@ exports.updateMovie = async (id, movieObj) => {
 };
 
 //create a delete or delete many function
-
+exports.deleteFilm = async (Movie, target) => {
+    try{
+        //deleting identifier which is target variable
+    const deleted = await Movie.deleteOne(target);
+    console.log(deleted);
+} catch (error){
+    console.log(error);
+}
+};
